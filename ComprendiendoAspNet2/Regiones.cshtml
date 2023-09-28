@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/MasterPage.cshtml";
+}
+
+@*Listado de regiones*@
+
+<h2>@ComprendiendoAspNet2.Global.Regiones.Count regiones <a href="~/CreateRegion" class="btn btn-primary">+</a> </h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Total departamentos</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ComprendiendoAspNet2.Global.Regiones)
+    {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Nombre</td>
+        <td>@item.Descripcion</td>
+        <td>@ComprendiendoAspNet2.Global.Departamentos.Where(x=>x.IdRegion==item.Id).Count()</td>
+        <td><a href="~/DetalleRegion.cshtml?Id=@item.Id" class="btn btn-info" >Ver detalles</a></td>
+    </tr>
+    }
+</table>

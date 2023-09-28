@@ -1,0 +1,54 @@
+﻿@using ComprendiendoAspNet2
+@{
+    Layout = "~/MasterPage2.cshtml";
+}
+<h2>Datos de la nueva región</h2>
+
+<div class="row">
+    <form method="post" class="col-4">
+
+        <div class="mb-3">
+            <label for="id" class="form-label">Id región</label>
+            <input class="form-control" type="number" name="id" />
+        </div>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="nombre" />
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" type="text" name="descripcion"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+    </form>
+</div>
+
+@if (IsPost)
+{
+    if (!Request["id"].IsEmpty() && !Request["nombre"].IsEmpty() && !Request["descripcion"].IsEmpty())
+    {
+        
+        int id = int.Parse(Request["id"]);
+        string nombre = Request["nombre"];
+        string descripcion = Request["descripcion"];
+
+        Global.Regiones.Add(new Global.Region(id, nombre, descripcion));
+
+        <div class="alert alert-success" role="alert">
+            <p>Se agrego una region </p>
+            <a href="~/Regiones" class="btn btn-info">Ver regiones</a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <p>Complete todos los campos </p>
+        </div>
+    }
+
+}
+
+
+

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/MasterPage2.cshtml";
+}
+
+@*Listado de regiones*@
+
+<h2>@ComprendiendoAspNet2.Global.Departamentos.Count departamentos <a href="#" class="btn btn-primary">+</a> </h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ComprendiendoAspNet2.Global.Departamentos)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Nombre</td>
+            <td><a href="#" class="btn btn-info">Ver detalles</a></td>
+        </tr>
+    }
+</table>
